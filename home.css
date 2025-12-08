@@ -130,3 +130,19 @@ body {
     font-size: 15px;
     opacity: 0.9;
 }
+/*butoni i pare*/
+.btn {
+    padding: 12px 25px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 10px;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
