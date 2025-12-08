@@ -146,3 +146,34 @@ body {
     background: rgba(255,255,255,0.2);
     transform: scale(1.05);
 }
+
+/* vecorite */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    position: relative;
+    margin-top: -80px;
+    z-index: 5; /* i ben kartat te qendrojne mbi background */
+}
+
+.feature-card {
+    width: 250px;
+    height: 200px;
+    background: #fff;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+.feature-card h3{
+    font-size: 17px;
+}
+.feature-card p{
+    font-size: 13px;
+}
+.feature-card:hover{
+    background:#483429;
+    color: white;
+}
