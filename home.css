@@ -330,4 +330,66 @@ body {
     max-height: 600px;
     object-fit: cover;
 }
+/*Responsive*/
+@media (max-width: 900px) {
+  .navbar {
+      flex-direction: column;
+      padding: 15px;
+      gap: 15px;
+  }
 
+  .navbar ul {
+      gap: 25px;
+  }
+  .hyrja {
+      padding-left: 20px;
+      text-align: center;
+      justify-content: center;
+  }
+
+  .hyrja-permbajtja h1 {
+      font-size: 30px;
+  }
+
+  .hyrja-permbajtja p {
+      font-size: 14px;
+  }
+  .features {
+      flex-direction: column;
+      align-items: center;
+      margin-top: -20px;
+  }
+
+  .feature-card {
+      width: 80%;
+      height: auto;
+  }
+
+  .interior {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .interior-img img {
+      width: 100%;
+      height: auto;
+  }
+
+  .services-section {
+      flex-direction: column;
+  }
+
+  .services-text, 
+  .services-image {
+      width: 100%;
+  }
+
+  .services-image img {
+      width: 100%;
+      max-height: none;
+  }
+
+  .quote-section {
+      padding: 60px 20px;
+  }
+}
