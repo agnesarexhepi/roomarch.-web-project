@@ -37,7 +37,44 @@
 
 <main class="login-wrapper">
     <div class="container" id="container">
+ <!-- SIGN UP -->
+ <div class="form-container sign-up-container">
+    <form id="signupForm">
+        <h1>Create Account</h1>
 
+        <div class="social-container">
+            <a href="https://accounts.google.com" target="_blank" class="social">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="https://www.facebook.com/login" target="_blank" class="social">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="social">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+
+        <span>Or continue with</span>
+
+        <input type="text" id="signupName" placeholder="Name">
+        <input type="email" id="signupEmail" placeholder="Email">
+        <input type="password" id="signupPassword" placeholder="Password">
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<!-- SIGN IN -->
+<div class="form-container sign-in-container">
+    <form id="loginForm">
+        <h1>Sign In</h1>
+
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Password">
+
+        <button type="submit">Sign In</button>
+    </form>
+</div>
     </div>
 </main>
 
