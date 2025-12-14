@@ -37,60 +37,72 @@
 
 <main class="login-wrapper">
     <div class="container" id="container">
- <!-- SIGN UP -->
- <div class="form-container sign-up-container">
-    <form id="signupForm">
-        <h1>Create Account</h1>
+        <!-- SIGN UP -->
+        <div class="form-container sign-up-container">
+            <form id="signupForm">
+                <h1>Create Account</h1>
 
-        <div class="social-container">
-            <a href="https://accounts.google.com" target="_blank" class="social">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="https://www.facebook.com/login" target="_blank" class="social">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com" target="_blank" class="social">
-                <i class="fab fa-instagram"></i>
-            </a>
+                <div class="social-container">
+                    <a href="https://accounts.google.com" target="_blank" class="social">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="https://www.facebook.com/login" target="_blank" class="social">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="social">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+
+                <span>Or continue with</span>
+
+                <input type="text" id="signupName" placeholder="Name">
+                <span class="error" id="signupNameError"></span>
+
+                <input type="email" id="signupEmail" placeholder="Email">
+                <span class="error" id="signupEmailError"></span>
+
+                <input type="password" id="signupPassword" placeholder="Password">
+                <span class="error" id="signupPasswordError"></span>
+
+                <span class="success" id="signupSuccess"></span>
+
+                <button type="submit">Sign Up</button>
+            </form>
         </div>
 
-        <span>Or continue with</span>
+        <!-- SIGN IN -->
+        <div class="form-container sign-in-container">
+            <form id="loginForm">
+                <h1>Sign In</h1>
 
-        <input type="text" id="signupName" placeholder="Name">
-        <input type="email" id="signupEmail" placeholder="Email">
-        <input type="password" id="signupPassword" placeholder="Password">
+                <input type="email" id="loginEmail" placeholder="Email">
+                <span class="error" id="loginEmailError"></span>
 
-        <button type="submit">Sign Up</button>
-    </form>
-</div>
+                <input type="password" id="loginPassword" placeholder="Password">
+                <span class="error" id="loginPasswordError"></span>
 
-<!-- SIGN IN -->
-<div class="form-container sign-in-container">
-    <form id="loginForm">
-        <h1>Sign In</h1>
+                <span class="success" id="loginSuccess"></span>
 
-        <input type="email" id="loginEmail" placeholder="Email">
-        <input type="password" id="loginPassword" placeholder="Password">
-
-        <button type="submit">Sign In</button>
-    </form>
-</div>
-<!-- OVERLAY -->
-<div class="overlay-container">
-    <div class="overlay">
-        <div class="overlay-panel overlay-left">
-            <h1>Welcome Back</h1>
-            <p>Please login with your personal info</p>
-            <button class="ghost" id="signIn">Sign In</button>
+                <button type="submit">Sign In</button>
+            </form>
         </div>
+        <!-- OVERLAY -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back</h1>
+                    <p>Please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
 
-        <div class="overlay-panel overlay-right">
-            <h1>Welcome to RoomArch</h1>
-            <p>Create an account to access our design services</p>
-            <button class="ghost" id="signUp">Sign Up</button>
+                <div class="overlay-panel overlay-right">
+                    <h1>Welcome to RoomArch</h1>
+                    <p>Create an account to access our design services</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
     </div>
 </main>
 

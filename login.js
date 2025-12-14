@@ -12,42 +12,58 @@ signIn.addEventListener("click", () => {
     container.classList.remove("right-panel-active");
 });
 
-// LOGIN FORM VALIDATION
-const loginForm = document.getElementById("loginForm");
+/* LOGIN */
 loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
 
-    if(email === "" || password === "") {
-        alert("Please fill in all fields");
+    loginEmailError.textContent = "";
+    loginPasswordError.textContent = "";
+    loginSuccess.textContent = "";
+
+    if (loginEmail.value === "") {
+        loginEmailError.textContent = "Email is required";
         return;
     }
-    if(password.length < 6) {
-        alert("Password must be at least 6 characters");
+
+    if (loginPassword.value === "") {
+        loginPasswordError.textContent = "Password is required";
         return;
     }
-    alert("Login successful (demo)"); 
+
+    loginSuccess.textContent = "Login successful";
     loginForm.reset();
 });
 
-// SIGNUP FORM VALIDATION
-const signupForm = document.getElementById("signupForm");
-signupForm.addEventListener("submit", function(e) {
+/* SIGN UP */
+signupForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    const name = document.getElementById("signupName").value;
-    const email = document.getElementById("signupEmail").value;
-    const password = document.getElementById("signupPassword").value;
 
-    if(name === "" || email === "" || password === "") {
-        alert("Please fill in all fields");
+    signupNameError.textContent = "";
+    signupEmailError.textContent = "";
+    signupPasswordError.textContent = "";
+    signupSuccess.textContent = "";
+
+    if (signupName.value === "") {
+        signupNameError.textContent = "Name is required";
         return;
     }
-    if(password.length < 6) {
-        alert("Password must be at least 6 characters");
+
+    if (signupEmail.value === "") {
+        signupEmailError.textContent = "Email is required";
         return;
     }
-    alert("Account created successfully (demo)");
+
+    if (signupPassword.value === "") {
+        signupPasswordError.textContent = "Password is required";
+        return;
+    }
+
+    if (signupPassword.value.length < 6) {
+        signupPasswordError.textContent = "Password must be at least 6 characters";
+        return;
+    }
+
+    signupSuccess.textContent = "Account created successfully";
     signupForm.reset();
 });
 

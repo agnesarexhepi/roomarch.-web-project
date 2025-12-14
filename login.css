@@ -219,3 +219,17 @@ button.ghost {
     background-color: #483429;
     color: white;
 }
+
+.error {
+    color: #d8000c;
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.success {
+    color: #2e7d32;
+    font-size: 14px;
+    margin: 10px 0;
+    display: block;
+}
