@@ -42,6 +42,18 @@ body {
     font-size: 18px;
 }
 
+.nav-btn {
+    background: white;
+    color: black !important;
+    padding: 8px 18px;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.nav-btn::after {
+    display: none;
+}
+
 .logo-section {
     display: flex;
     align-items: center;
