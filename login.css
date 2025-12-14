@@ -233,3 +233,27 @@ button.ghost {
     margin: 10px 0;
     display: block;
 }
+
+/* NAVBAR RESPONSIVE */
+@media (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .nav-left,
+    .nav-right {
+        justify-content: center;
+    }
+
+    .navbar ul {
+        gap: 25px;
+        padding: 0;
+    }
+
+    .logo-section {
+        order: -1;
+        justify-content: center;
+    }
+}
