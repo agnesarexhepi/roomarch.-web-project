@@ -146,6 +146,38 @@ body {
     margin-bottom: 60px;
 }
 
+.contact-left {
+    position: relative;
+    padding: 40px;
+    background-image: url("https://maps.googleapis.com/maps/api/staticmap?center=Pristina&zoom=13&size=800x800");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.contact-left::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+}
+
+.map-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.contact-left > * {
+    position: relative;
+    z-index: 2;
+}
+
+.map-link {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
 .contact-info {
     display: flex;
     gap: 80px;
