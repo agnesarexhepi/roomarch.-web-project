@@ -458,14 +458,14 @@ body {
 }
 
 .services-image {
-    width: 50%;
+    width:30%;
 }
 
 .services-image img {
     width: 100%;
     height: auto;
     max-height: 600px;
-    object-fit: cover;
+    object-fit: cover; 
 }
 /*Responsive*/
 @media (max-width: 900px) {
