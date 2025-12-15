@@ -5,45 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoomArch – Interior Design</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="home.css">
     <link rel="icon" type="image/png" href="Photos/logo.png">
 
 </head>
 <body>
      <!-- navbari -->
-    <header class="navbar">
-        <nav class="nav-left">
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-            </ul>
-        </nav>
+<header class="navbar">
+    <nav class="nav-left">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+        </ul>
+    </nav>
 
-        <div class="logo-section">
-            <img src="Photos/logo.png" alt="RoomArch Logo" class="logo-img">
-            <span class="logo-text">RoomArch.</span>
+    <div class="logo-section">
+        <img src="Photos/logo.png" alt="RoomArch Logo" class="logo-img">
+        <span class="logo-text">RoomArch.</span>
+    </div>
+
+    <nav class="nav-right">
+        <ul>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" class="nav-btn">Login</a></li>
+
+
+        </ul>
+    </nav>
+</header>
+    <!--HERO-->
+<section class="hero">
+
+    <!-- RADIO BUTTONS -->
+    <input type="radio" name="hero" id="slide1" checked>
+    <input type="radio" name="hero" id="slide2">
+    <input type="radio" name="hero" id="slide3">
+
+    <div class="hero-container">
+        <div class="hero-left">
+            <span class="hero-label">INNOVATIVE IDEAS<br> STYLISH DESIGNS</span>
+            <h1>RoomArch<br>Design Studio</h1>
+            <div class="hero-cta">
+                <span>view portfolio</span>
+                <span>→</span>
+            </div>
+
+            <!-- SOCIAL MEDIA -->
+            <div class="hero-social">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.behance.net" target="_blank"><i class="fab fa-behance"></i></a>
+            </div>                
         </div>
 
-        <nav class="nav-right">
-            <ul>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html" class="nav-btn">Login</a></li>
-
-
-            </ul>
-        </nav>
-    </header>
-
-     <!-- pjesa hyrese -->
-    <section class="hyrja">
-        <div class="hyrja-permbajtja">
-            <h1>INNOVATIVE IDEAS<br> STYLISH DESIGNS</h1>
-            <p>Creative interiors designed in Kosovo — crafted to elevate your space with elegance, comfort, and functionality.</p>
-            <button class="btn">View Portfolio</button>
+        <div class="hero-right">
+            <div class="hero-slides">
+                <img src="Photos/Home 1.png" alt="Slide 1">
+                <img src="Photos/Home 2.png" alt="Slide 2">
+                <img src="Photos/Home 3.png" alt="Slide 3">
+            </div>
         </div>
-    </section>
+
+        <div class="hero-arrows">
+            <div id="prev" class="arrow">&#10094;</div>
+            <div id="next" class="arrow">&#10095;</div>
+        </div>
+
+        <!-- BOTTOM -->
+        <div class="hero-info">
+            <span class="num">01</span>
+            <p>
+                Creative interiors designed in Kosovo — crafted to elevate your space with elegance, comfort, and functionality.
+            </p>
+            <div class="details">
+                <span><strong>Design theme</strong><br>natural</span>
+                <span><strong>conversion</strong><br>open floor plan</span>
+                <span><strong>lighting by</strong><br>Muuto</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const slides = ["slide1", "slide2", "slide3"];
+        let current = 0;
+
+        const updateSlide = () => {
+            document.getElementById(slides[current]).checked = true;
+        };
+
+        document.getElementById("next").addEventListener("click", () => {
+            current = (current + 1) % slides.length;
+            updateSlide();
+        });
+
+        document.getElementById("prev").addEventListener("click", () => {
+            current = (current - 1 + slides.length) % slides.length;
+            updateSlide();
+        });
+    </script>
+</section>
+
 
     <!-- vecorite-cards sepse duhet te duken mbi background -->
     <section class="features">
@@ -68,30 +132,30 @@
             <br><br>
             <p>Modern, elegant, and personalized designs crafted to fit your lifestyle.</p>
         </div>
-    </section>
+     </section>
 
 
     <!-- pjesa e poshtme -->
-    <section class="interior">
-        <div class="interior-text">
-            <h4>Award Winning</h4>
-            <h2>Interior Design</h2>
+<section class="interior">
+    <div class="interior-text">
+        <h4>Award Winning</h4>
+        <h2>Interior Design</h2>
             <p>
                 At RoomArch, we create calm, intentional spaces grounded in clarity and precision. Based in Kosovo, our design approach focuses on essential forms, natural materials, and thoughtful simplicity. Every interior is crafted to feel balanced, functional, and quietly refined.
             </p>
 
-            <p class="ceo">— RoomArch Design Studio</p>
+        <p class="ceo">— RoomArch Design Studio</p>
 
-            <button class="btn-black">Read More</button>
-        </div>
+        <button class="btn-black">Read More</button>
+    </div>
 
         <div class="interior-img">
             <img src="Photos/foto2.jpg" alt="Project Making Process">
         </div>
-    </section>
+</section>
 
    <!-- quote -->
-   <section class="quote-section">
+<section class="quote-section">
     <h2>The most treasured spaces are thoughtful, curated, and authentic.</h2>
     <p>
         We design interiors that balance calmness, beauty, and refined function — creating spaces that feel warm and intentional.
@@ -125,9 +189,9 @@
 </section>
 
     <!-- footer -->
-    <footer class="footer">
-        <p>© 2025 RoomArch – Interior Design Studio, Kosovo</p>
-    </footer>
+<footer class="footer">
+    <p>© 2025 RoomArch – Interior Design Studio, Kosovo</p>
+</footer>
 
 </body>
 </html>

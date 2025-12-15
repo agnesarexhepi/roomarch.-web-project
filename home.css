@@ -125,64 +125,156 @@ body {
     }
 }
 
+/*HERO*/
+/* HERO SECTION */
+.hero {
+    height: 90vh;
+    background: #111;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
 
-/*hyrja*/
+.hero input { display: none; }
 
-.hyrja {
-    height: 85vh;
-    background: url('Photos/Home 1.png') center/cover no-repeat;
+.hero-container {
+    display: flex;
+    height: 100%;
+}
+
+/* LEFT PANEL */
+.hero-left {
+    width: 35%;
+    background: #111;
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-label {
+    letter-spacing: 6px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.hero-left h1 {
+    font-size: 40px;
+    margin: 25px 0 40px;
+    line-height: 1.2;
+}
+
+/* CTA */
+.hero-cta {
+    background: white;
+    color: black;
+    width: 220px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+/* SOCIAL */
+.hero-social {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    gap: 15px;
+}
+
+.hero-social a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+/* RIGHT SLIDER */
+.hero-right {
+    width: 65%;
+    overflow: hidden;
+}
+
+.hero-slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.7s ease;
+}
+
+.hero-slides img {
+    width: 33.333%;
+    object-fit: cover;
+}
+
+/* SLIDE MOVEMENT */
+#slide1:checked ~ .hero-container .hero-slides { transform: translateX(0%); }
+#slide2:checked ~ .hero-container .hero-slides { transform: translateX(-33.333%); }
+#slide3:checked ~ .hero-container .hero-slides { transform: translateX(-66.666%); }
+
+/* ARROWS */
+.hero-arrows {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    padding-left: 60px;
-    position: relative;
-    border-bottom-left-radius: 120px;
-    border-bottom-right-radius: 120px;
-    overflow: visible;
-    z-index: 1;
+    gap: 20px;
 }
 
-.hyrja::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-}
-
-.hyrja-permbajtja {
-    position: relative;
-    max-width: 450px;
-    color: #fff;
-    z-index: 2;
-}
-
-.hyrja-permbajtja h1 {
-    font-size: 40px;
-    font-weight: 800;
-    line-height: 1.3;
-    margin-bottom: 15px;
-}
-
-.hyrja-permbajtja p {
-    margin-bottom: 30px;
-    font-size: 15px;
-    opacity: 0.9;
-}
-/*butoni i pare*/
-.btn {
-    padding: 12px 25px;
-    background: transparent;
-    border: 2px solid #fff;
-    color: #fff;
+.hero-arrows .arrow {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 50%; /* makes circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    font-size: 10px;
-    border-radius: 6px;
+    transition: 0.3s;
 }
 
-.btn:hover {
-    
-    background: rgba(255,255,255,0.2);
-    transform: scale(1.05);
+.hero-arrows .arrow:hover {
+    background: white;
+    color: #483429;
 }
+
+
+/* BOTTOM INFO BAR */
+.hero-info {
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    width: 65%;
+    background: rgba(0,0,0,0.55);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 13px;
+}
+
+.hero-info .num { font-size: 22px; opacity: 0.7; }
+.hero-info p { max-width: 350px; opacity: 0.8; }
+.hero-info .details { display: flex; gap: 30px; }
+
+/* HERO RESPONSIVE */
+@media (max-width: 900px) {
+    .hero-container { flex-direction: column; }
+    .hero-left, .hero-right { width: 100%; }
+    .hero-info {
+        position: static;
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .hero-arrows { display: none; }
+}
+
 
 /* vecorite */
 .features {
@@ -190,8 +282,7 @@ body {
     justify-content: center;
     gap: 25px;
     position: relative;
-    margin-top: -80px;
-    z-index: 5; /* i ben kartat te qendrojne mbi background */
+    margin-top: 60px;
 }
 
 .feature-card {
@@ -367,20 +458,6 @@ body {
 }
 /*Responsive*/
 @media (max-width: 900px) {
-
-  .hyrja {
-      padding-left: 20px;
-      text-align: center;
-      justify-content: center;
-  }
-
-  .hyrja-permbajtja h1 {
-      font-size: 30px;
-  }
-
-  .hyrja-permbajtja p {
-      font-size: 14px;
-  }
   .features {
       flex-direction: column;
       align-items: center;
