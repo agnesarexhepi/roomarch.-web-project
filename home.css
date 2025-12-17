@@ -1092,3 +1092,61 @@ background: radial-gradient(circle, rgba(218, 213, 209, 1) 0%, rgba(114, 104, 10
         max-width: 100%;
     }
 }
+
+.cta-eyebrow {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 18px;
+}
+
+.cta-quote {
+    padding: 120px 60px;
+    background: #f4f1ec;
+    text-align: center;
+}
+
+.cta-quote h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.cta-quote p {
+    max-width: 520px;
+    margin: 0 auto 35px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+}
+
+.cta-quote-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 1px solid #111;
+    color: #111;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.cta-quote-btn:hover {
+    background: #111;
+    color: #fff;
+}
+@media (max-width: 900px) {
+    .cta-quote {
+        padding: 80px 25px;
+    }
+
+    .cta-quote h2 {
+        font-size: 28px;
+    }
+    .cta-quote p {
+        font-size: 13px;
+    }
+}

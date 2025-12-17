@@ -10,10 +10,9 @@ html {
 }
 
 body {
-    background: #f7f7f7;
+    background: white;
     color: #222;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 /*navbar*/
 .navbar {
