@@ -1146,3 +1146,90 @@ background: radial-gradient(circle, rgba(218, 213, 209, 1) 0%, rgba(114, 104, 10
         font-size: 13px;
     }
 }
+
+/* WHY CHOOSE US – FAQ */
+.why-faq {
+    padding: 120px 60px;
+    background: #ffffff;
+}
+
+.why-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.why-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 400;
+    margin-bottom: 18px;
+}
+
+.why-intro p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666;
+    max-width: 420px;
+}
+
+/* FAQ LIST */
+.faq-list details {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 22px 0;
+}
+
+.faq-list summary {
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 25px;
+}
+
+.faq-list summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.faq-list details[open] summary::after {
+    content: "–";
+}
+
+.faq-list p {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666;
+    max-width: 480px;
+}
+
+.faq-list summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .why-faq {
+        padding: 80px 25px;
+    }
+    .why-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .why-intro h2 {
+        font-size: 28px;
+    }
+    .why-intro p {
+        font-size: 13px;
+    }
+}
