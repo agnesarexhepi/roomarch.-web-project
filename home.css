@@ -126,8 +126,7 @@ body {
 
 /*HERO*/
 .hero {
-    min-height: 90vh;
-    height: auto;
+    height: 90vh;
     background: #111;
     color: white;
     position: relative;
@@ -1181,7 +1180,6 @@ body {
     background-color: #1c1c1c;
     padding: 60px 0;
 }
-
 
 .footer-container {
     display: flex;

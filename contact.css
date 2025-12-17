@@ -544,6 +544,7 @@ body {
 
     .footer-links a {
         margin-bottom: 8px;
+        font-size: 13px;
     }
 
     .footer-contact p {
