@@ -682,111 +682,107 @@ body {
     }
 }
 
-/* services */
-.services-section {
-    display: flex;
-    background: #1c1c1c;
-    color: white;
-    padding: 0;
-    width: 100%;
-    min-height: 500px;
+/* BEFORE & AFTER */
+.before-after-single {
+    padding: 120px 60px;
+    background: #f4f1ec;
 }
 
-.services-text {
-    width: 50%;
-    padding: 60px 50px;
+.before-after-inner.split {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.before-after-content {
+    max-width: 420px;
+}
+
+.before-after-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 400;
+    margin: 18px 0;
+}
+
+.before-after-content p {
+    font-size: 14px;
     line-height: 1.7;
+    color: #666;
+    margin-bottom: 40px;
 }
 
-.services-text h2 {
-    font-size: 48px;
-    margin-bottom: 30px;
+.before-after-image.vertical {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    height: 640px;
 }
 
-.services-text p {
-    margin-bottom: 20px;
-}
-
-.services-text .tags {
-    font-size: 13px;
-    letter-spacing: 1px;
-    margin-top: 30px;
-}
-
-.learn-more-box {
-    margin-top: 35px;
-    padding-top: 10px;
-    border-top: 1px solid white;
-    width: 150px;
-}
-
-.learn-link {
-    display: block;
-    margin-top: 8px;
-    letter-spacing: 1px;
-    font-size: 13px;
-    color: white;
-    text-decoration: none;
-}
-
-.learn-link:hover {
-    opacity: 0.7;
-}
-
-.services-image {
-    width:30%;
-}
-
-.services-image img {
+.before-after-image.vertical img {
     width: 100%;
-    height: auto;
-    max-height: 600px;
-    object-fit: cover; 
+    height: 100%;
+    object-fit: cover;
 }
 
+.before-after-image.vertical .divider-horizontal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(255,255,255,0.6);
+}
+
+.before-after-image.vertical .label {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.65);
+    color: white;
+}
+
+.before-after-image.vertical .label.before {
+    top: 20px;
+}
+
+.before-after-image.vertical .label.after {
+    bottom: 20px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 900px) {
-  .features {
-      flex-direction: column;
-      align-items: center;
-      margin-top: -20px;
+    .before-after-inner.split {
+        grid-template-columns: 1fr;
+        gap: 50px;
     }
 
-  .feature-card {
-      width: 80%;
-      height: auto;
-  }
-
-  .interior {
-      flex-direction: column;
-      text-align: center;
-  }
-
-  .interior-img img {
-      width: 100%;
-      height: auto;
-  }
-
-  .services-section {
-      flex-direction: column;
-  }
-
-  .services-text, 
-  .services-image {
-      width: 100%;
-  }
-
-  .services-image img {
-      width: 100%;
-      max-height: none;
-  }
-
-  .quote-section {
-      padding: 60px 20px;
+    .before-after-image.vertical {
+        height: 420px;
     }
-  .quote-section h2 {
-      font-size: 28px;
-  }
 
+    .before-after-single {
+        padding: 80px 25px;
+    }
+
+    .before-after-image.vertical .divider-horizontal {
+        display: none;
+    
+    }
+    .before-after-image.vertical .label {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+    .before-after-content h2 {
+        font-size: 28px;
+    }
 }
 
 /* footer */
