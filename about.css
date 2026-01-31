@@ -123,3 +123,42 @@ body {
         order: -1;
     }
 }
+
+  /* MANIFESTO */
+  .about-manifesto {
+    padding: 160px 10%;
+    background-color: #f4f1ec;
+  }
+  
+  .manifesto-inner h1 {
+    font-size: 64px;
+    line-height: 1.05;
+    max-width: 900px;
+  }
+  
+  .manifesto-inner p {
+    margin-top: 40px;
+    font-size: 18px;
+    max-width: 520px;
+    color: #444;
+  }
+  @media (max-width: 768px) {
+    .manifesto-inner h1 {
+      font-size: 42px;
+    }
+  }
+  /* BREAK */
+  .about-break {
+    padding: 120px 20px;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 300;
+    background: #1c1c1c;
+    color: #f4f1ec;
+  }
+  @media (max-width: 768px) {
+    .about-break {
+      font-size: 32px;
+      padding: 80px 20px;
+    }
+  }
