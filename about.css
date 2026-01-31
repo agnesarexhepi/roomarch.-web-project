@@ -273,3 +273,96 @@ body {
     }
 }
 
+
+/* PRINCIPLES */
+.about-principles {
+    padding: 160px 10%;
+    background: #f4f1ec;
+}
+
+.principles-header h2 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.principles-header p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.principles-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+}
+
+.principle-card {
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.principle-card span {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.principle-card h3 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.principle-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.principle-card:hover {
+    transform: translateY(-12px) rotateZ(-1deg);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+    background: #fefcf8;
+}
+
+.principle-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 4px;
+    height: 100%;
+    background: #d9b08c;
+    transition: left 0.5s ease;
+}
+
+.principle-card:hover::before {
+    left: 0;
+}
+
+@media (max-width: 768px) {
+    .principles-cards {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .about-principles {
+        padding: 80px 10%;
+    }
+    .principles-header h2 {
+        font-size: 32px;
+    }
+    .principles-header p {
+        font-size: 14px;
+        margin-bottom: 40px;
+    }
+}
