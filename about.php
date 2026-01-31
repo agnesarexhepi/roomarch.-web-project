@@ -2,8 +2,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$pdo = require_once 'classes/database.php';
-require_once 'classes/Page.php';
+$pdo = require_once 'Classes/Database.php';
+require_once 'Classes/Page.php';
 
 $page = new Page($pdo);
 $aboutContent = $page->get('about');
@@ -27,8 +27,8 @@ $aboutContent = $page->get('about');
         <nav class="nav-left">
             <ul>
                 <li><a href="home.php">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="services.php">Services</a></li>
             </ul>
         </nav>
 
@@ -39,9 +39,9 @@ $aboutContent = $page->get('about');
 
         <nav class="nav-right">
             <ul>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html" class="nav-btn">Login</a></li>
+                <li><a href="projects.php">Projects</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="login.php" class="nav-btn">Login</a></li>
 
 
             </ul>
@@ -152,7 +152,7 @@ $aboutContent = $page->get('about');
       <!-- CTA -->
     <section class="about-cta">
         <h2>Design starts with a question.</h2>
-        <a href="contact.html">Start yours</a>
+        <a href="contact.php">Start yours</a>
       </section>
   
        <!-- footer -->
