@@ -366,3 +366,42 @@ body {
         margin-bottom: 40px;
     }
 }
+
+/* CTA */
+.about-cta {
+    padding: 160px 20px;
+    text-align: center;
+    background: #1c1c1c;
+    color: #fff;
+  }
+  
+  .about-cta h2 {
+    font-size: 48px;
+    margin-bottom: 40px;
+  }
+  
+  .about-cta a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 6px;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 1024px) {
+    .about-editorial,
+    .about-diagram,
+    .about-principles {
+      grid-template-columns: 1fr;
+    }
+  
+    .editorial-text,
+    .diagram-text {
+      padding: 80px 40px;
+    }
+  
+    .manifesto-inner h1 {
+      font-size: 42px;
+    }
+  }
+  
