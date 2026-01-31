@@ -1,3 +1,18 @@
+<?php
+require "classes/Database.php";
+
+try {
+    $db = new Database();
+    $conn = $db->connect();
+} catch (Exception $e) {
+    error_log($e->getMessage());
+    die("Database connection failed");
+}
+$heroTitle = "RoomArch<br>Design Studio";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +30,9 @@
 <header class="navbar">
     <nav class="nav-left">
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="services.php">Services</a></li>
         </ul>
     </nav>
 
@@ -28,9 +43,9 @@
 
     <nav class="nav-right">
         <ul>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html" class="nav-btn">Login</a></li>
+            <li><a href="projects.php">Projects</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="login.php" class="nav-btn">Login</a></li>
 
 
         </ul>
@@ -47,7 +62,7 @@
     <div class="hero-container">
         <div class="hero-left">
             <span class="hero-label">INNOVATIVE IDEAS<br> STYLISH DESIGNS</span>
-            <h1>RoomArch<br>Design Studio</h1>
+            <h1><?= $heroTitle ?></h1>
             <div class="hero-cta">
                 <span>view portfolio</span>
                 <span>→</span>

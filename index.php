@@ -47,7 +47,6 @@
         try {
             $db = new Database();
             $conn = $db->connect();
-            echo "<h1 class='success'>Database connected successfully.</h1>";
         } catch (Exception $e) {
             error_log($e->getMessage());
             echo "<h1 class='error'>An error occurred. Please try again later.</h1>";
