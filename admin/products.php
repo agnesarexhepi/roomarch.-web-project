@@ -16,7 +16,8 @@ $projects = $repo->getAllProjects();
 <div class="content">
     <h2>Lista e Projekteve</h2>
     <table border="1" width="100%" style="background: white; border-collapse: collapse;">
-        <tr style="background: #eee;">
+    <th>Created By</th>
+    <tr style="background: #eee;">
             <th>Foto</th>
             <th>Titulli</th>
             <th>Lokacioni</th>
