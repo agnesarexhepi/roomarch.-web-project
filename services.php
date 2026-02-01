@@ -61,7 +61,7 @@ $services = $serviceModel->getAllServices();
     
     <!-- SERVICES -->
     <section class="services-hero">
-    <h1>Our Specialized Services</h1>
+    <h1>Our Services</h1>
     <p>We combine architectural precision with artistic vision to create spaces that inspire.</p>
 </section>
 <section class="services-container">

@@ -114,7 +114,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE NAVBAR */
 @media (max-width: 1100px) {
     .navbar ul {
         gap: 20px;
@@ -144,6 +144,7 @@ body {
     }
 }
 
+/* HERO SECTION */
 .services-hero {
     background: #111;
     color: white;
@@ -164,6 +165,7 @@ body {
     margin: 0 auto;
 }
 
+/* SERVICES ROWS */
 .services-container {
     background: #111; 
     padding: 100px 0;
@@ -225,6 +227,7 @@ body {
     right: 8%; 
 }
 
+/* PRICING SECTION */
 .pricing-container {
     background: #f4f1ec;
     padding: 120px 60px;
@@ -338,38 +341,54 @@ body {
     border-color: #b59a6a;
 }
 
+/* RESPONSIVE SERVICES & PRICING */
 @media (max-width: 900px) {
+    .services-hero h1 { font-size: 38px; }
+    .services-hero p { font-size: 16px; }
+
+    .services-container { padding: 60px 0; }
+
     .service-row, .service-row.reverse {
-        flex-direction: column;
+        flex-direction: column !important;
         padding: 0 20px;
-        margin-bottom: 80px;
+        margin-bottom: 60px;
     }
-    .service-image, .service-block {
+
+    .service-image {
         width: 100%;
+        margin-bottom: -30px;
+    }
+
+    .service-block {
+        width: 90%;
         position: static;
-    }
-    .pricing-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-@media (max-width: 768px) {
-    .service-row, .service-row.reverse {
-        flex-direction: column !important; 
+        margin: 0 auto;
+        padding: 30px;
         text-align: center;
     }
 
-    .service-image, .service-block {
-        width: 100% !important;
-        height: auto;
-    }
+    .pricing-container { padding: 80px 20px; }
+    .pricing-header h2 { font-size: 36px; margin-bottom: 40px; }
 
     .pricing-grid {
-        grid-template-columns: 1fr; 
-        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .price-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .price-card.featured {
+        transform: scale(1);
+    }
+    
+    .price-card.featured:hover {
+        transform: translateY(-10px);
     }
 }
-
 
 /* Footer */
 .site-footer {
@@ -508,30 +527,7 @@ body {
         max-width: 100%;
     }
 
-    .footer-links a {
-        margin-bottom: 8px;
-        font-size: 13px;
-    }
-
-    .footer-contact p {
-        margin-bottom: 8px;
-    }
-
-    .footer-bottom {
-        font-size: 12px;
-    }
-
-    .footer-bottom .back-top {
-        font-size: 11px;
-    }
-
-    .footer-links,
-    .footer-contact {
+    .footer-links, .footer-contact {
         text-align: center;
-    }
-
-    .footer-links h4,
-    .footer-contact h4 {
-        margin-bottom: 10px;
     }
 }

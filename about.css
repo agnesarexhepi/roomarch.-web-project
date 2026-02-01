@@ -162,11 +162,17 @@ body {
     max-width: 520px;
     color: #444;
   }
-  @media (max-width: 768px) {
-    .manifesto-inner h1 {
-      font-size: 42px;
+  @media (max-width: 480px) {
+    .about-manifesto {
+        padding: 80px 20px;
     }
-  }
+    .manifesto-inner h1 {
+        font-size: 32px; 
+    }
+    .about-cta h2 {
+        font-size: 32px;
+    }
+}
   
   /* ABOUT BREAK */
   .about-break {
@@ -290,6 +296,18 @@ body {
     .awards-text h2 {
         font-size: 32px;
         margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .awards-list li {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        padding: 15px 0;
+    }
+    .awards-list span {
+        font-size: 12px;
+        text-transform: uppercase;
     }
 }
 

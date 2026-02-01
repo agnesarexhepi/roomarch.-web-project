@@ -152,6 +152,8 @@ body {
     display:flex;
     justify-content:center;
     align-items:center;
+    padding: 0 20px;
+    text-align: center;
 }
 
 .projects-hero h1{
@@ -210,6 +212,10 @@ body {
     .projects-grid{
         grid-template-columns: repeat(2,1fr);
     }
+    
+    .projects-hero h1{
+        font-size: 45px;
+    }
 }
 
 @media (max-width:500px){
@@ -223,7 +229,8 @@ body {
     
 
     .projects-hero h1{
-        font-size:40px;
+        font-size:32px;
+        letter-spacing: 3px;
     }
     .tile-text h4{
         font-size:16px;
