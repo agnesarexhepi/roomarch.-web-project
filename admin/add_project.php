@@ -6,7 +6,7 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 
 require_once '../Classes/Database.php';
-require_once 'Project.php';
+require_once '../models/Project.php';
 
 if (isset($_POST['save_project'])) {
     $db = (new Database())->connect();
