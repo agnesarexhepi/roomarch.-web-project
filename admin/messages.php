@@ -23,18 +23,16 @@ $all_messages = $contactObj->merrMesazhet();
             <th>Veprimet</th> </tr>
     </thead>
     <tbody>
-        <?php foreach ($all_messages as $m): ?>
-            <tr>
-                <td><?php echo $m['id']; ?></td>
-                <td><?php echo htmlspecialchars($m['emri']); ?></td>
-                <td><?php echo htmlspecialchars($m['email']); ?></td>
-                <td><?php echo htmlspecialchars($m['mesazhi']); ?></td>
-                <td>
-                    <a href="messages.php?delete_id=<?php echo $m['id']; ?>" 
-                       onclick="return confirm('A jeni të sigurt?')" 
-                       style="color: red; text-decoration: none;">Fshij</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
+    <?php foreach ($all_messages as $m): ?>
+    <tr>
+        <td><?php echo $m['id']; ?></td>
+        <td><?php echo htmlspecialchars($m['name']); ?></td> <td><?php echo htmlspecialchars($m['email']); ?></td>
+        <td><?php echo htmlspecialchars($m['message']); ?></td> <td>
+            <a href="messages.php?delete_id=<?php echo $m['id']; ?>" 
+               onclick="return confirm('A jeni të sigurt?')" 
+               style="color: red; text-decoration: none;">Fshij</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
     </tbody>
 </table>

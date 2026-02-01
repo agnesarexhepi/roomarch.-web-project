@@ -3,25 +3,31 @@ require_once __DIR__ . '/../Classes/Database.php';
 
 class Contact extends Database {
     public function ruajMesazhin($emri, $email, $mesazhi) {
-        $db = $this->getConnection();
-        $sql = "INSERT INTO contacts (emri, email, mesazhi) VALUES (:emri, :email, :mesazhi)";
+        $db = $this->connect();
+        
+        $sql = "INSERT INTO contacts (name, email, message) VALUES (:name, :email, :message)";
+        
         $stmt = $db->prepare($sql);
         return $stmt->execute([
-            ':emri' => $emri,
+            ':name' => $emri,
             ':email' => $email,
-            ':mesazhi' => $mesazhi
+            ':message' => $mesazhi
         ]);
     }
 
     public function merrMesazhet() {
-        $db = $this->getConnection();
+        $db = $this->connect();
         $sql = "SELECT * FROM contacts ORDER BY id DESC";
-        return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function fshijMesazhin($id) {
-        $db = $this->getConnection();
+        $db = $this->connect(); 
         $sql = "DELETE FROM contacts WHERE id = :id";
         $stmt = $db->prepare($sql);
         return $stmt->execute([':id' => $id]);
     }
 }
+?>
