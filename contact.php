@@ -1,29 +1,36 @@
 <?php
 require_once 'models/Contact.php';
 
-$mesazhi_status = "";
+$message_status = "";
+$status_color = "#28a745";
 
-if (isset($_POST['dergo'])) {
-    $contact = new Contact();
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['send_msg'])) {
     
-    $emri = $_POST['emri'];
-    $email = $_POST['email'];
-    $mesazhi = $_POST['mesazhi'];
+    // Validimi Backend 
+    $emri = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $telefoni = trim($_POST['phone']);
+    $mesazhi = trim($_POST['message']);
 
-    if ($contact->ruajMesazhin($emri, $email, $mesazhi)) {
-        $mesazhi_status = "Mesazhi u dërgua me sukses!";
+    if (empty($emri) || empty($email) || empty($mesazhi)) {
+        $message_status = "Ju lutem plotësoni fushat e obligueshme!";
+        $status_color = "#dc3545";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $message_status = "Emaili nuk është i vlefshëm!";
+        $status_color = "#dc3545";
+    } else {
+        // Perdorimi i OOP 
+        $contactObj = new Contact();
+        if ($contactObj->ruajMesazhin($emri, $email, $mesazhi)) {
+            $message_status = "Mesazhi u dërgua me sukses!";
+            $status_color = "#28a745";
+        } else {
+            $message_status = "Ndodhi një gabim në server.";
+            $status_color = "#dc3545";
+        }
     }
 }
 ?>
-
-<form action="contact.php" method="POST">
-    <?php if($mesazhi_status): ?>
-        <p style="color: green;"><?php echo $mesazhi_status; ?></p>
-    <?php endif; ?>
-
-    <input type="text" name="emri" required> <input type="email" name="email" required> <textarea name="mesazhi" required></textarea> <button type="submit" name="dergo">Dërgo</button> </form>
-    
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,26 +101,30 @@ if (isset($_POST['dergo'])) {
     
             <!-- RIGHT SIDE FORM -->
             <div class="contact-form">
-    <h3>FEEDBACK FORM</h3>
+                <h3>FEEDBACK FORM</h3>
+                
+                <?php if($message_status != ""): ?>
+                    <p style="color: <?php echo $status_color; ?>; font-size: 13px; margin-bottom: 15px; font-weight: bold;">
+                        <?php echo $message_status; ?>
+                    </p>
+                <?php endif; ?>
+
+                <form action="contact.php" method="POST">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <input type="tel" name="phone" placeholder="Phone">
+                    <textarea name="message" placeholder="Message" required></textarea>
     
-    <?php if($message_status != ""): ?>
-        <p style="color: green; margin-bottom: 20px; font-size: 14px;"><?php echo $message_status; ?></p>
-    <?php endif; ?>
-
-    <form action="contact.php" method="POST">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="E-mail" required>
-        <textarea name="message" placeholder="Message" required></textarea>
-
-        <div class="form-bottom">
-            <label class="upload">
-                <input type="file" hidden>
-                ⬆ Upload file
-            </label>
-            <button type="submit" name="send">SEND MESSAGE →</button>
+                    <div class="form-bottom">
+                        <label class="upload">
+                            <input type="file" name="file" hidden>
+                            ⬆ Upload file
+                        </label>
+                        <button type="submit" name="send_msg">SEND MESSAGE →</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
-</div>
 
         <div class="map-iframe-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d93893.99924286187!2d21.151744!3d42.6573824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1765814419580!5m2!1sen!2s" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>

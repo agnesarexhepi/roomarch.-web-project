@@ -1,6 +1,14 @@
 <?php
 require_once '../models/Contact.php';
 $contactObj = new Contact();
+
+// fshirje
+if (isset($_GET['delete_id'])) {
+    $contactObj->fshijMesazhin($_GET['delete_id']);
+    header("Location: messages.php"); // Refresh
+    exit();
+}
+
 $all_messages = $contactObj->merrMesazhet();
 ?>
 
@@ -12,7 +20,7 @@ $all_messages = $contactObj->merrMesazhet();
             <th>Emri</th>
             <th>Email</th>
             <th>Mesazhi</th>
-        </tr>
+            <th>Veprimet</th> </tr>
     </thead>
     <tbody>
         <?php foreach ($all_messages as $m): ?>
@@ -21,6 +29,11 @@ $all_messages = $contactObj->merrMesazhet();
                 <td><?php echo htmlspecialchars($m['emri']); ?></td>
                 <td><?php echo htmlspecialchars($m['email']); ?></td>
                 <td><?php echo htmlspecialchars($m['mesazhi']); ?></td>
+                <td>
+                    <a href="messages.php?delete_id=<?php echo $m['id']; ?>" 
+                       onclick="return confirm('A jeni të sigurt?')" 
+                       style="color: red; text-decoration: none;">Fshij</a>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
