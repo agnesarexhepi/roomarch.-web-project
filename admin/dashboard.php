@@ -21,8 +21,7 @@ $allMessages = $contactObj->merrMesazhet();
 $serviceObj = new Service($db);
 $serviceObj = new Service($db);
 $totalServices = $serviceObj->getTotalServices();
-// $userRepo = new User($db);
-// $allUsers = $userRepo->getAllUsers();
+
 ?>
 
 <!DOCTYPE html>
