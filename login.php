@@ -1,111 +1,198 @@
+<?php
+ob_start();
+session_start();
+require_once 'Classes/Database.php';
+require_once 'models/User.php';
+
+$db = (new Database())->connect();
+$userModel = new User($db);
+
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $user = $userModel->login($email, $password);
+
+    if ($user) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['name'] = $user['name'];
+        $_SESSION['role'] = $user['role'];
+
+        // Pastrojmë çdo output të mundshëm që mund të ketë mbetur
+        ob_end_clean(); 
+
+        if ($user['role'] == 'admin') {
+            header("Location: admin/dashboard.php");
+            exit();
+        } else {
+            header("Location: index.php");
+            exit();
+        }
+    } else {
+        $error = "Email ose fjalëkalim i gabuar!";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoomArch - Login</title>
-    <style>
-        html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f7f5f2;
-        color: #1c1c1c;
-    }
+    <title>Login</title>
 
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100%;
-        padding: 50px 0;
-        box-sizing: border-box;
-    }
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="icon" type="image/png" href="Photos/logo.png">
 
-    .container {
-        background: #fff;
-        padding: 30px 40px;
-        border-radius: 12px;
-        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        width: 350px;
-        max-width: 90%;
-        text-align: center;
-    }
-
-    h2 {
-        color: #483429;
-        margin-bottom: 20px;
-        
-    }
-
-    input {
-        width: 90%;
-        padding: 10px;
-        margin: 8px 0;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        margin-top: 15px;
-        margin-bottom: 10px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 6px;
-        background-color: #483429;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-    }
-    .success {
-        color: #4CAF50;
-        font-weight: bold;
-        margin-top: 15px;
-    }
-    .error {
-        color: #FF4C4C;
-        font-weight: bold;
-        margin-top: 15px;
-    }
-    </style>
 </head>
 <body>
-    
-<div class="container">
-    <h2>Login</h2>
-    <form method="POST">
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <button type="submit" name="login">Login</button>
+
+<header class="navbar">
+    <nav class="nav-left">
+        <ul>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="services.php">Services</a></li>
+        </ul>
+    </nav>
+
+    <div class="logo-section">
+        <img src="Photos/logo.png" alt="RoomArch Logo" class="logo-img">
+        <span class="logo-text">RoomArch.</span>
+    </div>
+
+    <nav class="nav-right">
+        <ul>
+            <li><a href="projects.php">Projects</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="login.php" class="nav-btn">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="login-wrapper">
+    <div class="container" id="container">
+        <!-- SIGN UP -->
+        <div class="form-container sign-up-container">
+            <form id="signupForm">
+                <h1>Create Account</h1>
+
+                <div class="social-container">
+                    <a href="https://accounts.google.com" target="_blank" class="social">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="https://www.facebook.com/login" target="_blank" class="social">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="social">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+
+                <span>Or continue with</span>
+
+                <input type="text" id="signupName" placeholder="Name">
+                <span class="error" id="signupNameError"></span>
+
+                <input type="email" id="signupEmail" placeholder="Email">
+                <span class="error" id="signupEmailError"></span>
+
+                <input type="password" id="signupPassword" placeholder="Password">
+                <span class="error" id="signupPasswordError"></span>
+
+                <span class="success" id="signupSuccess"></span>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- SIGN IN -->
+        <div class="form-container sign-in-container">
+    <form method="POST" action="login.php">
+        <h1>Sign In</h1>
+        
+        <input type="email" name="email" placeholder="Email" required>
+        
+        <input type="password" name="password" placeholder="Password" required>
+
+        <?php if(!empty($error)): ?>
+            <span class="error" style="color: red;"><?php echo $error; ?></span>
+        <?php endif; ?>
+
+        <button type="submit">Sign In</button>
     </form>
-
-    <?php
-    session_start();
-    require "classes/Database.php";
-
-    if (isset($_POST['login'])) {
-        $db = new Database();
-        $conn = $db->connect();
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['role'] = $user['role'];
-
-            echo "<p class='success'>Logged in as ".$user['role']."</p>";
-        } else {
-            echo "<p class='error'>Wrong credentials</p>";
-        }
-    }
-    ?>
 </div>
+
+        <!-- OVERLAY -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back</h1>
+                    <p>Please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+
+                <div class="overlay-panel overlay-right">
+                    <h1>Welcome to RoomArch</h1>
+                    <p>Create an account to access our design services</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- footer -->
+<footer class="site-footer" role="contentinfo" id="contact">
+    <div class="footer-container">
+
+        <div class="footer-left">
+            <h3>RoomArch™</h3>
+            <p>
+                Calm, refined interior design studio offering
+                both in-person and online services.
+            </p>
+
+            <div class="footer-social">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.behance.net" target="_blank" aria-label="Behance">
+                    <i class="fab fa-behance"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h4>Extra links</h4>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <p>Kosovo</p>
+            <p>roomarch@gmail.com</p>
+            <p>+383 44 000 000</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 RoomArch – Interior Design Studio
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+</footer>
+
+<script src="login.js"></script>
 </body>
 </html>

@@ -13,6 +13,7 @@ signIn.addEventListener("click", () => {
 });
 
 /* LOGIN */
+/*
 loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -33,6 +34,7 @@ loginForm.addEventListener("submit", function (e) {
     loginSuccess.textContent = "Login successful";
     loginForm.reset();
 });
+*/
 
 /* SIGN UP */
 signupForm.addEventListener("submit", function (e) {

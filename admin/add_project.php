@@ -16,8 +16,10 @@ if (isset($_POST['save_project'])) {
     $location = htmlspecialchars($_POST['location']);
     $description = htmlspecialchars($_POST['description']);
     
-    $created_by = $_SESSION['username'] ?? 'Admin'; 
-
+    $created_by = $_SESSION['name'] ?? 'Admin'; 
+    
+    $user_id = $_SESSION['user_id'];
+    
     $imageName = time() . "_" . $_FILES['image']['name']; // Emër unik për të shmangur mbishkrimin
     $tmpPath = $_FILES['image']['tmp_name'];
     $destination = "../uploads/" . $imageName; // Fotot ruhen te rrënja /uploads/
