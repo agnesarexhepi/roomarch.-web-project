@@ -1,61 +1,76 @@
 <?php
 session_start();
-require_once '../models/Service.php';
-
-// Siguria: Vetem admini
+// Kontrolli i qasjes (Kerkesa 2 & 4)
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login.php");
     exit();
 }
 
-$serviceModel = new Service();
-$services = $serviceModel->getAllServices();
+require_once '../Classes/Database.php';
+require_once '../models/Service.php';
+
+$database = new Database();
+$db = $database->connect();
+
+$serviceModel = new Service($db);
+$services = $serviceModel->getAllServices(); // Merri te gjitha nga DB (Kerkesa 5)
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Manage Services - RoomArch</title>
-    <link rel="stylesheet" href="../services.css">
+    <title>Lista e Shërbimeve - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .admin-table { width: 90%; margin: 50px auto; border-collapse: collapse; background: white; }
-        .admin-table th, .admin-table td { padding: 15px; border: 1px solid #ddd; text-align: left; }
-        .admin-table th { background: #111; color: white; }
-        .action-btns a { padding: 5px 10px; text-decoration: none; color: white; border-radius: 3px; font-size: 13px; }
-        .btn-edit { background: #b59a6a; }
-        .btn-delete { background: #c0392b; }
-        .add-new { display: block; width: 200px; margin: 20px auto; text-align: center; padding: 10px; background: #111; color: white; text-decoration: none; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; margin: 0; display: flex; }
+        .sidebar { width: 250px; background: #111; color: white; height: 100vh; position: fixed; padding: 20px; }
+        .content { margin-left: 290px; padding: 40px; width: 100%; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 15px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background: #111; color: white; }
+        .btn-add { background: #b59a6a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-bottom: 20px; }
+        .btn-delete { color: #e74c3c; cursor: pointer; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <h2 style="text-align: center; margin-top: 30px;">Service Management</h2>
-    <a href="add_service.php" class="add-new">+ Add New Service</a>
+<div class="sidebar">
+    <h2>RoomArch Admin</h2>
+    <a href="dashboard.php" style="color:white; text-decoration:none; display:block; padding:10px 0;"> Dashboard</a>
+    <a href="services_list.php" style="color:#b59a6a; text-decoration:none; display:block; padding:10px 0;"> Menaxho Shërbimet</a>
+    <a href="dashboard.php" style="color:white; text-decoration:none; display:block; padding:10px 0;"> Kthehu</a>
+</div>
 
-    <table class="admin-table">
+<div class="content">
+    <h1>Menaxhimi i Shërbimeve</h1>
+    <a href="add_service.php" class="btn-add"><i class="fas fa-plus"></i> Shto Shërbim të Ri</a>
+
+    <table>
         <thead>
             <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Style</th>
-                <th>Created By (ID)</th> <th>Actions</th>
+                <th>Foto</th>
+                <th>Titulli</th>
+                <th>Stili</th>
+                <th>Shtuar nga (Admin ID)</th> <th>Veprimet</th>
             </tr>
         </thead>
         <tbody>
-            <?php while($row = $services->fetch_assoc()): ?>
+            <?php foreach ($services as $s): ?>
             <tr>
-                <td><img src="../<?php echo $row['image_path']; ?>" width="80"></td>
-                <td><?php echo $row['title']; ?></td>
-                <td><?php echo $row['color_class']; ?></td>
-                <td><?php echo $row['created_by']; ?></td>
-                <td class="action-btns">
-                    <a href="edit_service.php?id=<?php echo $row['id']; ?>" class="btn-edit">Edit</a>
-                    <a href="delete_service.php?id=<?php echo $row['id']; ?>" class="btn-delete" onclick="return confirm('A jeni i sigurt?')">Delete</a>
+                <td><img src="../<?php echo $s['image_path']; ?>" width="60" style="border-radius:4px;"></td>
+                <td><?php echo $s['title']; ?></td>
+                <td><?php echo $s['color_class']; ?></td>
+                <td><?php echo $s['created_by']; ?></td>
+                <td>
+                    <a href="delete_service.php?id=<?php echo $s['id']; ?>" class="btn-delete" onclick="return confirm('A jeni i sigurt?')">
+                        <i class="fas fa-trash"></i> Fshij
+                    </a>
                 </td>
             </tr>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
+</div>
+
 </body>
 </html>

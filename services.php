@@ -51,22 +51,29 @@ $services = $serviceModel->getAllServices();
     <p>We combine architectural precision with artistic vision to create spaces that inspire.</p>
 </section>
 <section class="services-container">
-        <?php if (count($services) > 0): ?>
-            <?php foreach ($services as $row): ?>
-                <div class="service-row <?php echo ($row['is_reverse']) ? 'reverse' : ''; ?>">
-                    <div class="service-image">
-                        <img src="<?php echo $row['image_path']; ?>" alt="Service Image">
-                    </div>
-                    <div class="service-block <?php echo $row['color_class']; ?>">
-                        <h3><?php echo strtoupper($row['title']); ?></h3>
-                        <p><?php echo $row['description']; ?></p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p style="color: white; text-align: center; padding: 50px;">Nuk ka shërbime për të shfaqur.</p>
-        <?php endif; ?>
-    </section>
+    <?php 
+    if (count($services) > 0): 
+        $i = 0;
+        foreach ($services as $row): 
+            $layoutClass = ($i % 2 !== 0) ? 'reverse' : ''; 
+    ?>
+        <div class="service-row <?php echo $layoutClass; ?>">
+            <div class="service-image">
+                <img src="<?php echo $row['image_path']; ?>" alt="Service Image">
+            </div>
+            <div class="service-block <?php echo $row['block_color']; ?>"> 
+                <h3><?php echo strtoupper($row['title']); ?></h3>
+                <p><?php echo $row['description']; ?></p>
+            </div>
+        </div>
+    <?php 
+        $i++;
+        endforeach; 
+    else: 
+    ?>
+        <p style="color: white; text-align: center; padding: 50px;">Nuk ka shërbime për të shfaqur.</p>
+    <?php endif; ?>
+</section>
 
      <!-- PRICING -->
 
