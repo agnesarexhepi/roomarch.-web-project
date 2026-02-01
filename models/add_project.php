@@ -1,25 +1,39 @@
 <?php
-require_once 'classes/Database.php';
-require_once 'project.php';
+session_start();
+if(!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+
+require_once '../Classes/Database.php';
+require_once 'Project.php';
 
 if (isset($_POST['save_project'])) {
     $db = (new Database())->connect();
     $repo = new ProjectRepository($db);
 
-    $title = $_POST['title'];
-    $location = $_POST['location'];
-    $description = $_POST['description'];
-    $created_by = "Admin";
+    $title = htmlspecialchars($_POST['title']);
+    $location = htmlspecialchars($_POST['location']);
+    $description = htmlspecialchars($_POST['description']);
+    
+    $created_by = $_SESSION['username'] ?? 'Admin'; 
 
-    $imageName = $_FILES['image']['name'];
+    $imageName = time() . "_" . $_FILES['image']['name']; // Emër unik për të shmangur mbishkrimin
     $tmpPath = $_FILES['image']['tmp_name'];
-    $destination = "uploads/" . $imageName;
+    $destination = "../uploads/" . $imageName; // Fotot ruhen te rrënja /uploads/
+
+    if (!is_dir('../uploads')) {
+        mkdir('../uploads', 0777, true);
+    }
 
     if (move_uploaded_file($tmpPath, $destination)) {
-        // Thirrja e metodes
         if ($repo->addProject($title, $location, $imageName, $description, $created_by)) {
-            echo "<script>alert('Projekti u shtua!'); window.location='projects.php';</script>";
+            echo "<script>alert('Projekti u shtua me sukses!'); window.location='products.php';</script>";
+        } else {
+            echo "<script>alert('Gabim gjatë ruajtjes në databazë.');</script>";
         }
+    } else {
+        echo "<script>alert('Dështoi ngarkimi i fotos. Kontrolloni folderin uploads.');</script>";
     }
 }
 ?>
@@ -27,24 +41,38 @@ if (isset($_POST['save_project'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Shto Projekt - RoomArch</title>
+    <title>Shto Projekt - RoomArch Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .form-container { max-width: 500px; margin: 50px auto; font-family: Arial; padding: 20px; border: 1px solid #ddd; }
-        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; }
-        button { background: #111; color: white; padding: 10px 20px; border: none; cursor: pointer; width: 100%; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .form-container { background: white; width: 100%; max-width: 500px; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        h2 { margin-top: 0; color: #111; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        label { display: block; margin-top: 15px; font-weight: bold; color: #555; }
+        input, textarea { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        button { background: #111; color: white; padding: 12px; border: none; border-radius: 6px; cursor: pointer; width: 100%; margin-top: 20px; font-size: 16px; transition: 0.3s; }
+        button:hover { background: #333; }
+        .back-link { display: inline-block; margin-top: 15px; color: #666; text-decoration: none; font-size: 14px; }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h2>Shto Projekt të Ri</h2>
+        <h2><i class="fas fa-plus-circle"></i> Shto Projekt të Ri</h2>
         <form method="POST" enctype="multipart/form-data">
-            <input type="text" name="title" placeholder="Titulli i Projektit" required>
-            <input type="text" name="location" placeholder="Lokacioni (p.sh. Prishtinë)" required>
-            <textarea name="description" placeholder="Përshkrimi i Projektit" rows="4"></textarea>
-            <label>Ngarko foton:</label>
-            <input type="file" name="image" required>
+            <label>Titulli i Projektit</label>
+            <input type="text" name="title" placeholder="p.sh. Modern Living Room" required>
+            
+            <label>Lokacioni</label>
+            <input type="text" name="location" placeholder="p.sh. Prishtinë" required>
+            
+            <label>Përshkrimi</label>
+            <textarea name="description" placeholder="Shkruani detajet e projektit..." rows="4" required></textarea>
+            
+            <label>Fotoja e Projektit (JPG, PNG)</label>
+            <input type="file" name="image" accept="image/*" required>
+            
             <button type="submit" name="save_project">Ruaj Projektin</button>
         </form>
+        <a href="dashboard.php" class="back-link"><i class="fas fa-arrow-left"></i> Kthehu te Dashboard</a>
     </div>
 </body>
 </html>
