@@ -17,6 +17,9 @@ $services = $serviceModel->getAllServices();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services</title>
     <link rel="stylesheet" href="services.css">
+    <link rel="icon" type="image/png" href="Photos/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 </head>
 <body>
@@ -132,5 +135,55 @@ $services = $serviceModel->getAllServices();
             </div>
         </div>
     </section>
+
+
+<!-- footer -->
+<section class="footer-bg">
+    <footer class="site-footer" role="contentinfo" id="contact">
+    <div class="footer-container">
+
+        <div class="footer-left">
+            <h3>RoomArch™</h3>
+            <p>
+                Calm, refined interior design studio offering
+                both in-person and online services.
+            </p>
+
+            <div class="footer-social">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.behance.net" target="_blank" aria-label="Behance">
+                    <i class="fab fa-behance"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h4>Extra links</h4>
+            <a href="home.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="services.php">Services</a>
+            <a href="projects.php">Projects</a>
+            <a href="contact.php">Contact</a>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <p>Kosovo</p>
+            <p>roomarch@gmail.com</p>
+            <p>+383 44 000 000</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 RoomArch – Interior Design Studio
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+</footer>
+</section>
 </body>
 </html>
