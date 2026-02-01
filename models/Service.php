@@ -19,4 +19,12 @@ class Service {
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([$title, $description, $image, $color, $price, $plan, $admin_id]);
     }
+
+    public function getTotalServices() {
+        $sql = "SELECT COUNT(*) as total FROM services";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
 }

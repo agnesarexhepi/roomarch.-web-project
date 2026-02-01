@@ -19,9 +19,8 @@ $contactObj = new Contact($db);
 $allMessages = $contactObj->merrMesazhet();
 
 $serviceObj = new Service($db);
-$allServices = $serviceObj->getAllServices();
-
-// Per perdoruesit (opsionale per momentin)
+$serviceObj = new Service($db);
+$totalServices = $serviceObj->getTotalServices();
 // $userRepo = new User($db);
 // $allUsers = $userRepo->getAllUsers();
 ?>
@@ -67,8 +66,11 @@ $allServices = $serviceObj->getAllServices();
          </div>
 
          <div class="card">
-            <h3>Shërbime</h3> <p><?php echo $allServices->num_rows; ?></p> 
-        </div>
+             <div class="card-content">
+             <h3>Shërbime</h3>
+             <p><?php echo $totalServices; ?></p> 
+             </div>
+         </div>
     
          <div class="card">
              <h3>Mesazhe</h3>
