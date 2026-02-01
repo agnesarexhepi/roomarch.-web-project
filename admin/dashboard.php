@@ -9,6 +9,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 require_once '../Classes/Database.php';
 require_once '../models/Project.php';
 require_once '../models/Contact.php';
+require_once '../models/Service.php';
 
 $db = (new Database())->connect();
 $projectRepo = new ProjectRepository($db);
@@ -16,6 +17,9 @@ $allProjects = $projectRepo->getAllProjects();
 
 $contactObj = new Contact($db); 
 $allMessages = $contactObj->merrMesazhet();
+
+$serviceObj = new Service($db);
+$allServices = $serviceObj->getAllServices();
 
 // Per perdoruesit (opsionale per momentin)
 // $userRepo = new User($db);
@@ -47,6 +51,7 @@ $allMessages = $contactObj->merrMesazhet();
     <h2>RoomArch Admin</h2>
     <a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
     <a href="products.php"><i class="fas fa-tasks"></i> Menaxho Projektet</a>
+    <a href="services_list.php"><i class="fas fa-concierge-bell"></i> Menaxho Shërbimet</a>
     <a href="messages.php"><i class="fas fa-envelope"></i> Mesazhet</a>
     <a href="../home.php"><i class="fas fa-external-link-alt"></i> Shiko Website</a>
     <a href="../logout.php" style="color: #ff7675;"><i class="fas fa-sign-out-alt"></i> Dil</a>
@@ -60,6 +65,10 @@ $allMessages = $contactObj->merrMesazhet();
              <h3>Projekte</h3>
              <p><?php echo count($allProjects); ?></p>
          </div>
+
+         <div class="card">
+            <h3>Shërbime</h3> <p><?php echo $allServices->num_rows; ?></p> 
+        </div>
     
          <div class="card">
              <h3>Mesazhe</h3>
