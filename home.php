@@ -52,10 +52,13 @@ $heroTitle = "RoomArch<br>Design Studio";
         
         <?php if(isset($_SESSION['role'])): ?>
             <?php if($_SESSION['role'] === 'admin'): ?>
-                <li><a href="admin/dashboard.php" style="color: #d4af37;">Dashboard</a></li>
+                <li><a href="admin/dashboard.php" style="color: #d4af37; font-weight: bold;">Dashboard</a></li>
             <?php endif; ?>
             
-            <li><a href="logout.php" class="nav-btn">Logout (<?php echo $_SESSION['name']; ?>)</a></li>
+            <li class="user-info">
+                <span class="user-name">Hi, <?php echo explode(' ', $_SESSION['name'])[0]; ?>!</span>
+                <a href="logout.php" class="nav-btn logout-btn">Logout</a>
+            </li>
         <?php else: ?>
             <li><a href="login.php" class="nav-btn">Login</a></li>
         <?php endif; ?>

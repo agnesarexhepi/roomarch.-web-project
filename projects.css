@@ -14,7 +14,9 @@ body {
     color: #222;
     font-family: Arial, Helvetica, sans-serif;
 }
-/*navbar*/
+
+
+/* NAVBAR - Versioni i përshtatur për Login/Logout */
 .navbar {
     width: 100%;
     padding: 20px 60px;
@@ -26,18 +28,21 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    min-height: 80px;
 }
 
 .nav-left,
 .nav-right {
-    flex: 1;
+    flex: 1; 
     display: flex;
-    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
 }
 
 .nav-left {
     justify-content: flex-start;
 }
+
 .nav-right {
     justify-content: flex-end;
 }
@@ -46,7 +51,13 @@ body {
 .navbar ul {
     list-style: none;
     display: flex;
-    gap: 50px;
+    gap: 35px; 
+    align-items: center;
+}
+
+.nav-right ul li {
+    font-size: 14px;
+    color: #ccc;
 }
 
 .navbar ul li a {
@@ -77,6 +88,8 @@ body {
     padding: 8px 18px;
     border-radius: 2px;
     font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
 .nav-btn::after {
@@ -84,6 +97,7 @@ body {
 }
 
 .logo-section {
+    flex: 0 0 auto; 
     display: flex;
     align-items: center;
     gap:8px;
@@ -100,12 +114,20 @@ body {
     font-weight: bold;
     letter-spacing: 2px;
 }
-/* NAVBAR RESPONSIVE (GLOBAL) */
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .navbar ul {
+        gap: 20px;
+    }
+}
+
 @media (max-width: 900px) {
     .navbar {
         flex-direction: column;
         padding: 15px 20px;
         gap: 15px;
+        height: auto;
     }
 
     .nav-left,
@@ -114,7 +136,7 @@ body {
     }
 
     .navbar ul {
-        gap: 25px;
+        gap: 20px;
         padding: 0;
     }
 
@@ -122,7 +144,6 @@ body {
         order: -1;
     }
 }
-
 
 /* PROJECTS */
 .projects-hero{

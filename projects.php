@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -38,14 +40,24 @@ $dbConnection = $database->connect();
         </div>
 
         <nav class="nav-right">
-            <ul>
-                <li><a href="projects.php">Projects</a></li>
-                <li><a href="contact.php">Contact</a></li>
-                <li><a href="login.php" class="nav-btn">Login</a></li>
-
-
-            </ul>
-        </nav>
+    <ul>
+        <li><a href="projects.php">Projects</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        
+        <?php if(isset($_SESSION['role'])): ?>
+            <?php if($_SESSION['role'] === 'admin'): ?>
+                <li><a href="admin/dashboard.php" style="color: #d4af37; font-weight: bold;">Dashboard</a></li>
+            <?php endif; ?>
+            
+            <li class="user-info">
+                <span class="user-name">Hi, <?php echo explode(' ', $_SESSION['name'])[0]; ?>!</span>
+                <a href="logout.php" class="nav-btn logout-btn">Logout</a>
+            </li>
+        <?php else: ?>
+            <li><a href="login.php" class="nav-btn">Login</a></li>
+        <?php endif; ?>
+    </ul>
+</nav>
     </header>
     
     <!-- PROJECTS -->
