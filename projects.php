@@ -59,14 +59,12 @@ $dbConnection = $database->connect();
 
     if ($projects): 
         foreach ($projects as $project): ?>
-        <div class="project-tile" style="background-image: url('uploads/<?php echo $project['image']; ?>');">
-     <div class="tile-text">
-        <h4><?php echo htmlspecialchars($project['title']); ?></h4>
-        <span><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($project['location']); ?></span>
-        <p><?php echo htmlspecialchars($project['description']); ?></p>
-        <small>Shtuar nga: <?php echo htmlspecialchars($project['created_by']); ?></small>
-     </div>
-    </div>
+            <div class="project-tile" style="background-image: url('uploads/<?php echo $project['image']; ?>');">
+                <div class="tile-text">
+                    <h4><?php echo htmlspecialchars($project['title']); ?></h4>
+                    <span><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($project['location']); ?></span>
+                    </div>
+            </div>
         <?php endforeach; 
     else: ?>
         <div style="grid-column: 1 / -1; text-align: center; padding: 50px;">
