@@ -64,8 +64,11 @@ $heroTitle = "RoomArch<br>Design Studio";
             <span class="hero-label">INNOVATIVE IDEAS<br> STYLISH DESIGNS</span>
             <h1><?= $heroTitle ?></h1>
             <div class="hero-cta">
+
+                <a href="projects.php" class="portfolio-link">
                 <span>view portfolio</span>
                 <span>→</span>
+            </a>
             </div>
 
             <!-- SOCIAL MEDIA -->
@@ -374,7 +377,7 @@ $heroTitle = "RoomArch<br>Design Studio";
                         A functional workspace designed to enhance focus, flow,
                         and quiet collaboration.
                     </p>
-                    <a href="project-single.html" class="project-link">View Case Study →</a>
+                    <a href="projects.php" class="project-link">View Case Study →</a>
                 </div>
             </article>
 
@@ -397,7 +400,7 @@ $heroTitle = "RoomArch<br>Design Studio";
         </div>
 
         <div class="featured-footer">
-            <a href="projects.html" class="btn-outline">View All Projects</a>
+            <a href="projects.php" class="btn-outline">View All Projects</a>
         </div>
 
     </div>
@@ -416,7 +419,7 @@ $heroTitle = "RoomArch<br>Design Studio";
                 clarity, balance, and material restraint.
             </p>
 
-            <a href="about.html" class="btn-outline">
+            <a href="about.php" class="btn-outline">
                 Learn More About Our Studio
             </a>
         </div>
@@ -508,7 +511,7 @@ $heroTitle = "RoomArch<br>Design Studio";
         We collaborate closely to shape spaces that feel calm, refined, and functional.
     </p>
 
-    <a href="contact.html" class="cta-quote-btn">Contact Us</a>
+    <a href="contact.php" class="cta-quote-btn">Contact Us</a>
 </section>
 
 <!-- footer -->
@@ -538,11 +541,11 @@ $heroTitle = "RoomArch<br>Design Studio";
 
         <div class="footer-links">
             <h4>Extra links</h4>
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
+            <a href="home.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="services.php">Services</a>
+            <a href="projects.php">Projects</a>
+            <a href="contact.php">Contact</a>
         </div>
 
         <div class="footer-contact">

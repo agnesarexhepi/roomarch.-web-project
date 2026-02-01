@@ -182,11 +182,11 @@ $aboutContent = $page->get('about');
 
         <div class="footer-links">
             <h4>Extra links</h4>
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
+            <a href="home.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="services.php">Services</a>
+            <a href="projects.php">Projects</a>
+            <a href="contact.php">Contact</a>
         </div>
 
         <div class="footer-contact">

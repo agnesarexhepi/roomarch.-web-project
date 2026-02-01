@@ -1329,3 +1329,12 @@ body {
         margin-bottom: 10px;
     }
 }
+
+.portfolio-link {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.portfolio-link:hover {
+    color: #555;
+}
