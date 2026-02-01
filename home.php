@@ -1,12 +1,16 @@
 <?php
-require "classes/Database.php";
+session_start();
+
+require_once 'Classes/Database.php';
+require_once 'models/Project.php';
 
 try {
-    $db = new Database();
-    $conn = $db->connect();
+    $db = (new Database())->connect();
+    $projectRepo = new ProjectRepository($db);
+    $projects = $projectRepo->getAllProjects();
 } catch (Exception $e) {
     error_log($e->getMessage());
-    die("Database connection failed");
+    die("Ndodhi nje gabim ne lidhjen me te dhenat.");
 }
 $heroTitle = "RoomArch<br>Design Studio";
 
@@ -42,14 +46,21 @@ $heroTitle = "RoomArch<br>Design Studio";
     </div>
 
     <nav class="nav-right">
-        <ul>
-            <li><a href="projects.php">Projects</a></li>
-            <li><a href="contact.php">Contact</a></li>
+    <ul>
+        <li><a href="projects.php">Projects</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        
+        <?php if(isset($_SESSION['role'])): ?>
+            <?php if($_SESSION['role'] === 'admin'): ?>
+                <li><a href="admin/dashboard.php" style="color: #d4af37;">Dashboard</a></li>
+            <?php endif; ?>
+            
+            <li><a href="logout.php" class="nav-btn">Logout (<?php echo $_SESSION['name']; ?>)</a></li>
+        <?php else: ?>
             <li><a href="login.php" class="nav-btn">Login</a></li>
-
-
-        </ul>
-    </nav>
+        <?php endif; ?>
+    </ul>
+</nav>
 </header>
     <!--HERO-->
 <section class="hero">
