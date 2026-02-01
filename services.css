@@ -13,9 +13,8 @@ body {
     background: #f7f7f7;
     color: #222;
     font-family: Arial, Helvetica, sans-serif;
-
 }
-/*navbar*/
+
 .navbar {
     width: 100%;
     padding: 20px 60px;
@@ -39,10 +38,10 @@ body {
 .nav-left {
     justify-content: flex-start;
 }
+
 .nav-right {
     justify-content: flex-end;
 }
-
 
 .navbar ul {
     list-style: none;
@@ -101,7 +100,7 @@ body {
     font-weight: bold;
     letter-spacing: 2px;
 }
-/* NAVBAR RESPONSIVE (GLOBAL) */
+
 @media (max-width: 900px) {
     .navbar {
         flex-direction: column;
@@ -121,5 +120,215 @@ body {
 
     .logo-section {
         order: -1;
+    }
+}
+
+.services-hero {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 130px 20px;
+}
+
+.services-hero h1 {
+    font-size: 52px; 
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.services-hero p {
+    font-size: 18px;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.services-container {
+    background: #111; 
+    padding: 100px 0;
+}
+
+.service-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 200px; 
+    padding: 0 10%;
+}
+
+.service-image {
+    width: 50%; 
+    z-index: 1;
+}
+
+.service-image img {
+    width: 100%;
+    display: block;
+    filter: grayscale(100%); 
+    border-radius: 4px;
+    transition: 0.5s ease;
+}
+
+.service-block {
+    width: 35%;
+    padding: 50px;
+    position: absolute;
+    left: 8%; 
+    z-index: 2;
+    color: white;
+    box-shadow: 15px 15px 40px rgba(0,0,0,0.4);
+}
+
+.brown { background: #b59a6a; } 
+.dark { background: #222; }    
+
+.service-block h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.service-block p {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+.service-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.service-row.reverse .service-block {
+    left: auto;
+    right: 8%; 
+}
+
+.pricing-container {
+    background: #f4f1ec;
+    padding: 120px 60px;
+    text-align: center;
+    color: #111; 
+}
+
+.pricing-header .eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #b59a6a;
+    font-weight: bold;
+}
+
+.pricing-header h2 {
+    font-size: 55px;
+    margin: 15px 0 60px;
+}
+
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.price-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 50px 35px;
+    border-radius: 24px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.price-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.price-card.featured {
+    background: #111; 
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.price-card.featured:hover {
+    transform: scale(1.08) translateY(-10px);
+}
+
+.plan-name {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+.price {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 45px;
+    width: 100%;
+}
+
+.features-list li {
+    font-size: 15px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.features-list i {
+    color: #b59a6a;
+}
+
+.price-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 50px;
+    border: 1px solid #111;
+    color: #111;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.price-card.featured .price-btn {
+    background: #fff;
+    color: #111;
+    border: none;
+}
+
+.price-btn:hover {
+    background: #b59a6a;
+    color: #fff;
+    border-color: #b59a6a;
+}
+
+@media (max-width: 900px) {
+    .service-row, .service-row.reverse {
+        flex-direction: column;
+        padding: 0 20px;
+        margin-bottom: 80px;
+    }
+    .service-image, .service-block {
+        width: 100%;
+        position: static;
+    }
+    .pricing-grid {
+        flex-direction: column;
+        align-items: center;
     }
 }
