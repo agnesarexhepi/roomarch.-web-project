@@ -1,18 +1,25 @@
 <?php
 session_start();
-// Nese nuk eshte admin, ktheje te login
-// if($_SESSION['role'] !== 'admin') { header("Location: ../login.php"); exit(); }
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
 
 require_once '../Classes/Database.php';
 require_once '../models/Project.php';
+require_once '../models/Contact.php';
 
 $db = (new Database())->connect();
 $projectRepo = new ProjectRepository($db);
 $allProjects = $projectRepo->getAllProjects();
 
-// Supozojmë se do bëjmë edhe një për mesazhet
-// $contactRepo = new ContactRepository($db);
-// $allMessages = $contactRepo->getAllMessages();
+$contactObj = new Contact($db); 
+$allMessages = $contactObj->merrMesazhet();
+
+// Per perdoruesit (opsionale per momentin)
+// $userRepo = new User($db);
+// $allUsers = $userRepo->getAllUsers();
 ?>
 
 <!DOCTYPE html>
@@ -49,19 +56,21 @@ $allProjects = $projectRepo->getAllProjects();
     <h1>Përmbledhja e Website-it</h1>
     
     <div class="stats">
-        <div class="card">
-            <h3>Projekte</h3>
-            <p><?php echo count($allProjects); ?></p>
-        </div>
-        <div class="card">
-            <h3>Mesazhe</h3>
-            <p>12</p> </div>
-        <div class="card">
-            <h3>Përdorues</h3>
-            <p>5</p>
-        </div>
-    </div>
+           <div class="card">
+             <h3>Projekte</h3>
+             <p><?php echo count($allProjects); ?></p>
+         </div>
+    
+         <div class="card">
+             <h3>Mesazhe</h3>
+             <p><?php echo count($allMessages); ?></p> 
+          </div>
 
+        <div class="card">
+             <h3>Përdorues</h3>
+              <p>1</p> 
+         </div>
+        </div>
     <h3>Veprimet e Shpejta</h3>
     <a href="products.php" style="background: #111; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Shko te Menaxhimi i Projekteve</a>
 </div>

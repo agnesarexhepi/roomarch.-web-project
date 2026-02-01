@@ -37,7 +37,7 @@ loginForm.addEventListener("submit", function (e) {
 */
 
 /* SIGN UP */
-signupForm.addEventListener("submit", function (e) {
+/*signupForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     signupNameError.textContent = "";
@@ -68,4 +68,5 @@ signupForm.addEventListener("submit", function (e) {
     signupSuccess.textContent = "Account created successfully";
     signupForm.reset();
 });
+*/
 

@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: admin/dashboard.php");
             exit();
         } else {
-            header("Location: index.php");
+            header("Location: home.php");
             exit();
         }
     } else {
@@ -77,37 +77,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container" id="container">
         <!-- SIGN UP -->
         <div class="form-container sign-up-container">
-            <form id="signupForm">
-                <h1>Create Account</h1>
-
-                <div class="social-container">
-                    <a href="https://accounts.google.com" target="_blank" class="social">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="https://www.facebook.com/login" target="_blank" class="social">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com" target="_blank" class="social">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-
-                <span>Or continue with</span>
-
-                <input type="text" id="signupName" placeholder="Name">
-                <span class="error" id="signupNameError"></span>
-
-                <input type="email" id="signupEmail" placeholder="Email">
-                <span class="error" id="signupEmailError"></span>
-
-                <input type="password" id="signupPassword" placeholder="Password">
-                <span class="error" id="signupPasswordError"></span>
-
-                <span class="success" id="signupSuccess"></span>
-
-                <button type="submit">Sign Up</button>
-            </form>
+    <form method="POST" action="register.php">
+        <h1>Create Account</h1>
+        
+        <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-google"></i></a>
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
         </div>
+
+        <span>Or continue with</span>
+
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
 
         <!-- SIGN IN -->
         <div class="form-container sign-in-container">
@@ -193,6 +180,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </footer>
 
-<script src="login.js"></script>
 </body>
 </html>
